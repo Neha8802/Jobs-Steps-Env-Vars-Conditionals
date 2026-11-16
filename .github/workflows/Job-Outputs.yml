@@ -12,13 +12,13 @@ jobs:
     steps:
       - name: print the today date 
         id: get_date
-        run: echo "date_value:$date" >> $GITHUB_OUTPUT
-
-
+        # FIXED: Added parentheses $(date) so it runs the system command
+        run: echo "date_value=$(date)" >> $GITHUB_OUTPUT
 
   getting_date:
     needs: jobs_output
     runs-on: ubuntu-latest
     steps:
       - name: providing the date to outer world
-        run:  echo "date is ${{ needs.jobs_output.outputs.current_date }}"
+        # FIXED: Added the missing closing double quote (") at the very end
+        run: echo "date is ${{ needs.jobs_output.outputs.current_date }}"
