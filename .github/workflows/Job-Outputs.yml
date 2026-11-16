@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      current_date: ${{ steps.get_date.outputs.date_value }}
+      current_date: ${{ steps.get_date.outputs.date_str }}
 
     steps:
       - name: print the today date 
