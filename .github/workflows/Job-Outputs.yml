@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: print the today date 
         id: get_date
-        run: echo "date_value= $date" >> $GITHUB_OUTPUT
+        run: echo "date_value= $(date)" >> $GITHUB_OUTPUT
 
 
 
