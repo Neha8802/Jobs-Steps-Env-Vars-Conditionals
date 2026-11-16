@@ -1,0 +1,27 @@
+name: env variable workflow
+
+on: workflow_dispatch
+
+env:
+  APP_NAME: myapp
+
+jobs:
+  env_variable:
+    runs-on: ubuntu-latest
+
+    env:
+      ENVIRONMENT: staging
+
+    steps:
+      - name: print env var
+        env:
+          VERSION: 1.0.0
+        run: |
+          echo "app: $myapp"
+          echo "env: $staging"
+          echo "version: $1.0.0"
+
+      - name: commit sha and actor
+        run: |
+          echo "commit sha: $github.commit"
+          echo "actor: $github.actor"
