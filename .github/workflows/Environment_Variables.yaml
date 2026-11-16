@@ -17,9 +17,9 @@ jobs:
         env:
           VERSION: 1.0.0
         run: |
-          echo "app: $myapp"
-          echo "env: $staging"
-          echo "version: $1.0.0"
+          echo "app: $APP_NAME"
+          echo "env: $ENVIRONMENT"
+          echo "version: $VERSION"
 
       - name: commit sha and actor
         run: |
