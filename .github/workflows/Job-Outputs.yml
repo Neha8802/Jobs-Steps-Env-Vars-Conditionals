@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: print the today date 
         id: get_date
-        run: echo "date_value=$(date)" >> $GITHUB_OUTPUT
+        run: echo "date_value= $date" >> $GITHUB_OUTPUT
 
 
 
@@ -21,4 +21,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: providing the date to outer world
-        run:  echo "date is ${{ needs.jobs_output.outputs.current_date }}
+        run:  echo "date is ${{ needs.jobs_output.outputs.current_date }}"
