@@ -23,5 +23,5 @@ jobs:
 
       - name: commit sha and actor
         run: |
-          echo "commit sha: $github.commit"
-          echo "actor: $github.actor"
+          echo "commit sha: ${{ github.sha }}"
+          echo "actor: ${{ github.actor }}"
