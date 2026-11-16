@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      current_date: ${{ steps.get_date.outputs.date_str }}
+      current_date: ${{ steps.get_date.outputs.date_value }}
 
     steps:
       - name: print the today date 
         id: get_date
-        run: echo "date_str=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        run: echo "date_value:$date" >> $GITHUB_OUTPUT
 
 
 
