@@ -9,7 +9,7 @@ jobs:
   conditional:
     runs-on: ubuntu-latest
 
-    if: github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
       - name: choose trigger
