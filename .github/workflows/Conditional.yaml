@@ -1,35 +1,34 @@
-name: conditional yaml
+name: Task 4 Conditionals
 
-on: 
+on:
   push:
   pull_request:
   workflow_dispatch:
 
 jobs:
-  conditional:
+  # Requirement 3: A job that only runs on push events, not on pull requests
+  conditional-job:
     runs-on: ubuntu-latest
-
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push'
 
     steps:
-      - name: choose trigger
-        run: echo "this workflow will only trigger on workflow dispatch"
+      - name: General step
+        run: echo "Hello! This job only started because this is a push event."
 
-      - name: trigger on when it is particular branch
+      # Requirement 1: A step that only runs when the branch is main
+      - name: Main branch check
         if: github.ref == 'refs/heads/main'
-        run: echo "the step executed bcz the branch is main"
+        run: echo "🚀 This step only executes because we are on the main branch."
 
-      - name: intentional failure
+      # Requirement 4: A step with continue-on-error: true
+      - name: Risky step that fails
+        id: risky_step
         continue-on-error: true
         run: |
-          echo "the step failed"
-          
+          echo "Simulating a command failure..."
+          exit 1
 
-      - name: checking last step
+      # Requirement 2: A step that only runs when the previous step failed
+      - name: Recovery handler
         if: failure()
-        run: echo " previous step failed but continued due to cointinue on error"
-        
-
-        
-
-  
+        run: echo "⚠️ The previous step failed, but continue-on-error kept the pipeline alive so this handler could run!"
