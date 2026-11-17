@@ -1,0 +1,35 @@
+name: conditional yaml
+
+on: 
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  conditional:
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push'
+
+    steps:
+      - name: choose trigger
+        run: echo "this workflow will only trigger on workflow dispatch"
+
+      - name: trigger on when it is particular branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "the step executed bcz the branch is main"
+
+      - name: intentional failure
+        continue-on-error: true
+        run: |
+          echo "the step failed"
+          exit 1
+
+      - name: checking last step
+        if: failure()
+        run: echo " previous step failed but continued due to cointinue on error"
+        
+
+        
+
+  
