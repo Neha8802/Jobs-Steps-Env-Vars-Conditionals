@@ -23,7 +23,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "the step failed"
-          exit 1
+          
 
       - name: checking last step
         if: failure()
