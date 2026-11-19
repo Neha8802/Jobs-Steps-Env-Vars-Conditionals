@@ -23,12 +23,12 @@ jobs:
     steps:
       - name: summary job
         run: |
-          if ${{ github.ref_name }} == 'main'
+          if [ "${{ github.ref_name }}" = "main" ]; then
             echo "this is main branch push (branch: ${{ github.ref_name }})"
           else
             echo "this is feature branch push (branch: ${{ github.ref_name }})"
           fi
 
-            echo "the commit message is ${{ github.event.commits[0].message }}
+          echo "the commit message is ${{ github.event.commits[0].message }}
           
     
